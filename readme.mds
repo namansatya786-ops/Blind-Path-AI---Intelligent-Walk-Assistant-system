@@ -1,0 +1,228 @@
+# BlindPath AI – Intelligent Walking Path Assistant
+
+### AI-Powered Smart Navigation and Obstacle Detection System for Visually Impaired People
+
+<p align="center">
+  <b>Making Walking Safer Through Artificial Intelligence and Computer Vision</b>
+</p>
+
+---
+
+## 📌 Project Overview
+
+BlindPath AI is an Artificial Intelligence and Computer Vision-based intelligent walking assistance system designed to help visually impaired people navigate their surroundings more safely and independently.
+
+The system uses a camera to capture real-time environmental information and applies AI-based object detection to identify obstacles, potholes, stairs, vehicles, pedestrians and other potential hazards.
+
+It provides voice-based alerts to inform users about nearby obstacles and potential dangers.
+
+The main objective is to improve independent mobility through affordable AI-powered assistive technology.
+
+## 🎯 Problem Statement
+
+Visually impaired people face difficulties identifying obstacles and navigating unfamiliar environments.
+
+Traditional GPS navigation applications provide location-based directions but cannot reliably identify immediate physical obstacles.
+
+BlindPath AI aims to address this problem through real-time obstacle detection, hazard identification, distance estimation and voice assistance.
+
+## 🚀 Key Features
+
+- **AI Object Detection:** Detects people, vehicles, chairs, walls and other objects.
+- **Pothole Detection:** Identifies potholes and damaged walking surfaces.
+- **Obstacle Detection:** Identifies obstacles in the user's walking direction.
+- **Distance Estimation:** Estimates the distance between the camera and detected obstacles.
+- **Voice Assistance:** Provides real-time spoken warnings.
+- **Risk Analysis:** Evaluates potential walking hazards.
+- **Direction-Based Alerts:** Provides left, right and front obstacle warnings.
+- **GPS Hazard Mapping:** Displays reported dangerous locations.
+- **Emergency Assistance:** Supports emergency contact functionality.
+
+## 🛠️ Technologies Used
+
+| Technology | Purpose |
+|---|---|
+| Python | Main Programming Language |
+| YOLO | Object Detection |
+| PyTorch | Deep Learning |
+| OpenCV | Image Processing |
+| Flask | Backend Development |
+| HTML | Webpage Structure |
+| CSS | Webpage Styling |
+| JavaScript | Frontend Functionality |
+| SQLite / MySQL | Database |
+| pyttsx3 | Voice Assistance |
+| Leaflet.js | Hazard Mapping |
+
+## ⚙️ System Architecture
+
+```text
+       CAMERA INPUT
+            |
+            v
+       IMAGE CAPTURE
+            |
+            v
+      IMAGE PROCESSING
+            |
+            v
+      AI OBJECT DETECTION
+            |
+            v
+    OBSTACLE IDENTIFICATION
+            |
+            v
+     DISTANCE ESTIMATION
+            |
+            v
+       RISK ANALYSIS
+            |
+            v
+      VOICE ALERT SYSTEM
+            |
+            v
+      USER NOTIFICATION
+```
+
+## 📂 Project Structure
+
+```text
+BlindPath-AI/
+│
+├── app.py
+├── requirements.txt
+├── README.md
+│
+├── models/
+│   └── best.pt
+│
+├── dataset/
+│   ├── images/
+│   └── labels/
+│
+├── modules/
+│   ├── detection.py
+│   ├── distance.py
+│   ├── voice.py
+│   └── risk_analysis.py
+│
+├── templates/
+│   ├── index.html
+│   ├── dashboard.html
+│   └── results.html
+│
+├── static/
+│   ├── css/
+│   ├── js/
+│   └── uploads/
+│
+└── database/
+    └── db.py
+```
+
+## 💻 Installation and Setup
+
+### Step 1: Clone Repository
+
+```bash
+git clone https://github.com/USERNAME/BlindPath-AI-Intelligent-Walking-Assistant.git
+```
+
+### Step 2: Open Project Folder
+
+```bash
+cd BlindPath-AI-Intelligent-Walking-Assistant
+```
+
+### Step 3: Create Virtual Environment
+
+```bash
+python -m venv venv
+```
+
+### Step 4: Activate Virtual Environment
+
+Windows:
+
+```bash
+venv\Scripts\activate
+```
+
+### Step 5: Install Dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+### Step 6: Run Application
+
+```bash
+python app.py
+```
+
+Open your browser and visit:
+
+```text
+http://127.0.0.1:5000
+```
+
+## 🔍 Working Methodology
+
+1. Camera captures the surrounding environment.
+2. OpenCV processes the captured frames.
+3. YOLO detects objects and potential obstacles.
+4. Distance estimation evaluates obstacle proximity.
+5. Risk analysis determines potential danger.
+6. Voice assistance generates spoken warnings.
+7. The system displays detected hazards on the dashboard.
+
+## 🌟 Unique Innovations
+
+1. Intelligent walking risk assessment.
+2. Real-time obstacle identification.
+3. Pothole and open-drain detection.
+4. Direction-based voice alerts.
+5. Community-based hazard reporting.
+6. Historical walking hazard mapping.
+
+## 🔮 Future Scope
+
+- Android application integration.
+- Smart glasses integration.
+- Raspberry Pi-based portable hardware.
+- Offline AI detection.
+- Hindi and multilingual voice assistance.
+- Advanced depth estimation.
+- Real-time navigation assistance.
+
+## ⚠️ Safety Disclaimer
+
+BlindPath AI is an experimental assistive technology project. AI predictions may be inaccurate and should not replace a white cane, guide dog or established mobility assistance methods. Real-world deployment requires extensive safety testing.
+
+## 👨‍💻 Project Information
+
+**Project Name:** BlindPath AI – Intelligent Walking Path Assistant
+
+**Domain:** Artificial Intelligence and Machine Learning
+
+**Department:** Computer Science and Engineering (AI & ML)
+
+**Project Type:** Major Project
+
+**Development Environment:** Visual Studio Code
+
+**Programming Language:** Python
+
+## 📜 License
+
+This project is intended for educational and research purposes.
+
+A formal open-source license can be added before public distribution.
+
+---
+
+### ⭐ Support
+
+If you find this project interesting, consider giving this repository a star!
+
+**BlindPath AI – Empowering Independent Mobility Through Artificial Intelligence.**
