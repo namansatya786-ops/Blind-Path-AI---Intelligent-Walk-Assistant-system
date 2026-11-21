@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f5f8f6">
+    <meta name="description" content="A walking route planning prototype with spoken turn-by-turn directions.">
+    <title>BlindPath AI — Walking companion</title>
+    <link rel="preconnect" href="https://unpkg.com">
+    <link rel="preconnect" href="https://tile.openstreetmap.org">
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+      crossorigin=""
+    >
+    <link rel="stylesheet" href="/static/styles.css">
+  </head>
+  <body>
+    <a class="skip-link" href="#planner">Skip to route planner</a>
+    <header class="topbar">
+      <a class="brand" href="/" aria-label="BlindPath AI home">
+        <span class="brand-mark" aria-hidden="true">B</span>
+        <span>BlindPath <span class="brand-light">AI</span></span>
+      </a>
+      <span class="prototype-tag">WALKING COMPANION</span>
+    </header>
+
+    <main id="planner">
+      <section class="intro" aria-labelledby="page-title">
+        <p class="eyebrow">YOUR JOURNEY, MADE CLEARER</p>
+        <h1 id="page-title">A little more confidence<br>in every step.</h1>
+        <p class="intro-copy">Plan a walking route and listen to clear, step-by-step directions at your own pace.</p>
+      </section>
+
+      <div class="workspace">
+        <section class="planner-card" aria-labelledby="form-title">
+          <div class="card-heading">
+            <div>
+              <p class="eyebrow">PLAN A WALK</p>
+              <h2 id="form-title">Where would you like to go?</h2>
+            </div>
+            <span class="heading-icon" aria-hidden="true">↗</span>
+          </div>
+
+          <form id="route-form">
+            <div class="location-field">
+              <label for="origin-state">Starting state or union territory <span class="optional-label">optional</span></label>
+              <select id="origin-state" name="origin_state">
+                <option value="">All India</option>
+                <optgroup label="States">
+                  <option>Andhra Pradesh</option>
+                  <option>Arunachal Pradesh</option>
+                  <option>Assam</option>
+                  <option>Bihar</option>
+                  <option>Chhattisgarh</option>
+                  <option>Goa</option>
+                  <option>Gujarat</option>
+                  <option>Haryana</option>
+                  <option>Himachal Pradesh</option>
+                  <option>Jharkhand</option>
+                  <option>Karnataka</option>
+                  <option>Kerala</option>
+                  <option>Madhya Pradesh</option>
+                  <option>Maharashtra</option>
+                  <option>Manipur</option>
+                  <option>Meghalaya</option>
+                  <option>Mizoram</option>
+                  <option>Nagaland</option>
+                  <option>Odisha</option>
+                  <option>Punjab</option>
+                  <option>Rajasthan</option>
+                  <option>Sikkim</option>
+                  <option>Tamil Nadu</option>
+                  <option>Telangana</option>
+                  <option>Tripura</option>
+                  <option>Uttar Pradesh</option>
+                  <option>Uttarakhand</option>
+                  <option>West Bengal</option>
+                </optgroup>
+                <optgroup label="Union territories">
+                  <option>Andaman and Nicobar Islands</option>
+                  <option>Chandigarh</option>
+                  <option>Dadra and Nagar Haveli and Daman and Diu</option>
+                  <option value="Delhi">Delhi (National Capital Territory)</option>
+                  <option>Jammu and Kashmir</option>
+                  <option>Ladakh</option>
+                  <option>Lakshadweep</option>
+                  <option>Puducherry</option>
+                </optgroup>
+              </select>
+              <label for="origin">Starting city, area, or landmark</label>
+              <div class="input-wrap">
+                <span class="field-dot start-dot" aria-hidden="true"></span>
+                <input id="origin" name="origin" type="text" autocomplete="street-address" placeholder="e.g. Pune, railway station, or address" required maxlength="200">
+              </div>
+            </div>
+            <div class="route-connector" aria-hidden="true"></div>
+            <div class="location-field destination-field">
+              <label for="destination-state">Destination state or union territory <span class="optional-label">optional</span></label>
+              <select id="destination-state" name="destination_state">
+                <option value="">All India</option>
+                <optgroup label="States">
+                  <option>Andhra Pradesh</option>
+                  <option>Arunachal Pradesh</option>
+                  <option>Assam</option>
+                  <option>Bihar</option>
+                  <option>Chhattisgarh</option>
+                  <option>Goa</option>
+                  <option>Gujarat</option>
+                  <option>Haryana</option>
+                  <option>Himachal Pradesh</option>
+                  <option>Jharkhand</option>
+                  <option>Karnataka</option>
+                  <option>Kerala</option>
+                  <option>Madhya Pradesh</option>
+                  <option>Maharashtra</option>
+                  <option>Manipur</option>
+                  <option>Meghalaya</option>
+                  <option>Mizoram</option>
+                  <option>Nagaland</option>
+                  <option>Odisha</option>
+                  <option>Punjab</option>
+                  <option>Rajasthan</option>
+                  <option>Sikkim</option>
+                  <option>Tamil Nadu</option>
+                  <option>Telangana</option>
+                  <option>Tripura</option>
+                  <option>Uttar Pradesh</option>
+                  <option>Uttarakhand</option>
+                  <option>West Bengal</option>
+                </optgroup>
+                <optgroup label="Union territories">
+                  <option>Andaman and Nicobar Islands</option>
+                  <option>Chandigarh</option>
+                  <option>Dadra and Nagar Haveli and Daman and Diu</option>
+                  <option value="Delhi">Delhi (National Capital Territory)</option>
+                  <option>Jammu and Kashmir</option>
+                  <option>Ladakh</option>
+                  <option>Lakshadweep</option>
+                  <option>Puducherry</option>
+                </optgroup>
+              </select>
+              <label for="destination">Destination city, area, or landmark</label>
+              <div class="input-wrap">
+                <span class="field-dot end-dot" aria-hidden="true"></span>
+                <input id="destination" name="destination" type="text" autocomplete="street-address" placeholder="e.g. Kochi, city centre, or address" required maxlength="200">
+              </div>
+            </div>
+
+            <fieldset class="preferences">
+              <legend>Walking preferences</legend>
+              <label class="check-row">
+                <input type="checkbox" name="prefer_sidewalks" checked>
+                <span class="custom-check" aria-hidden="true"></span>
+                <span>Prefer routes with sidewalks</span>
+              </label>
+              <label class="check-row">
+                <input type="checkbox" name="avoid_steep_hills">
+                <span class="custom-check" aria-hidden="true"></span>
+                <span>Prefer gentler hills</span>
+              </label>
+            </fieldset>
+
+            <button class="primary-button" id="submit-button" type="submit">
+              <span>Find my walking route</span>
+              <span aria-hidden="true">→</span>
+            </button>
+            <p class="form-hint">Search is limited to India. Choose a state for better results, then enter any city, town, area, or landmark. Choose different states for an inter-state trip.</p>
+            <p class="privacy-note">Privacy: this app does not save trip history. Your places are sent to public OpenStreetMap Nominatim (search) and Valhalla (routing) services; their privacy policies apply. Avoid sensitive destinations if you are not comfortable sharing them.</p>
+          </form>
+
+          <div id="status" class="status" role="status" aria-live="polite" hidden></div>
+        </section>
+
+        <section class="map-card" aria-label="Route map">
+          <div class="map-heading">
+            <div>
+              <p class="eyebrow">YOUR ROUTE</p>
+              <h2 id="map-title">A clear view ahead</h2>
+            </div>
+            <span class="map-pin" aria-hidden="true">⌖</span>
+          </div>
+          <div id="map" role="region" aria-label="Interactive map showing your walking route">
+            <div class="map-empty">
+              <span class="map-empty-icon" aria-hidden="true">⌖</span>
+              <p>Your route will appear here</p>
+              <span>Enter two places to get started</span>
+            </div>
+          </div>
+          <p class="map-caption"><span class="legend-dot" aria-hidden="true"></span> Walking route <span class="map-data">Map data © OpenStreetMap</span></p>
+        </section>
+      </div>
+
+      <section id="route-results" class="results-card" aria-labelledby="results-title" hidden>
+        <div class="results-header">
+          <div>
+            <p class="eyebrow">YOUR WALK</p>
+            <h2 id="results-title">Route details</h2>
+          </div>
+          <button id="speak-all" class="secondary-button" type="button" aria-label="Read all directions aloud">
+            <span aria-hidden="true">▶</span> Listen to directions
+          </button>
+        </div>
+        <div class="route-stats" aria-label="Route summary">
+          <div class="stat"><span class="stat-icon" aria-hidden="true">↔</span><div><span class="stat-label">DISTANCE</span><strong id="distance-value">—</strong></div></div>
+          <div class="stat"><span class="stat-icon" aria-hidden="true">◷</span><div><span class="stat-label">ESTIMATED WALK</span><strong id="duration-value">—</strong></div></div>
+          <div class="stat"><span class="stat-icon" aria-hidden="true">⌖</span><div><span class="stat-label">DESTINATION</span><strong id="destination-value">—</strong></div></div>
+        </div>
+        <div class="steps-heading">
+          <h3>Step-by-step directions</h3>
+          <button id="stop-speech" class="text-button" type="button" hidden>Stop speaking</button>
+        </div>
+        <ol id="directions-list" class="directions-list"></ol>
+      </section>
+
+      <aside class="safety-note" aria-label="Important safety information">
+        <span class="safety-icon" aria-hidden="true">i</span>
+        <p><strong>A helpful guide, not a safety guarantee.</strong> Route data may be incomplete or out of date. This prototype cannot verify sidewalks, crossings, obstacles, lighting, or real-time conditions. Check your surroundings, follow local guidance, and use your usual mobility tools.</p>
+      </aside>
+    </main>
+
+    <footer>
+      <span>Designed to make walking information easier to access.</span>
+      <span>Routes by OpenStreetMap contributors</span>
+    </footer>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <script src="/static/app.js" defer></script>
+  </body>
+</html>
